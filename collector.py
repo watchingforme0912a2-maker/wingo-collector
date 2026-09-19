@@ -13,7 +13,14 @@ GAMES = [
 def fetch_history(family, code):
     ts = int(time.time() * 1000)
     url = f"https://draw.ar-lottery01.com/{family}/{code}/GetHistoryIssuePage.json?ts={ts}"
-    r = requests.get(url, timeout=30)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 15; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://www.shreewin55.com/",
+        "Origin": "https://www.shreewin55.com",
+    }
+    r = requests.get(url, headers=headers, timeout=30)
     r.raise_for_status()
     return r.json()
 
